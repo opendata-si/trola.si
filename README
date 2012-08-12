@@ -1,0 +1,18 @@
+- it's not possible to open source this since it contains secret keys (sentry ,..)
+
+TODO
+====
+
+* autocomplete stations
+* if wbus.talktrack.com is not functioning, the site says: Stran trenutno žal ni dosegljiva, poizkusite kasneje. Za motnje se vam opravicujemo.
+
+GEO Location
+* show nearest 5 stations (info, map)
+* to another location -> which buses?
+
+Stations
+* list
+
+Map
+* show stations
+* show routes

@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <title>LPP napoved prihodov mestnih avtobusov</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css" media="screen, projection">
+    <meta name="viewport" content="width=device-width,user-scalable=yes" />
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2515480-12']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1><a href="/">www.trola.si</a></h1>
+      <hr />
+
+      {% block content %}
+        {% if error %}
+          <h1>{{ error }}</h1>
+          <br />
+        {% endif %}
+          <hr />
+          <form id="dummy" action="/" method="GET">
+            <fieldset>
+              <p>
+                <input type="text"
+                       {% block autofocus %}autofocus="autofocus"{% endblock %}
+                       placeholder="Vnesi št. ali ime postaje"
+                       class="text"
+                       name="station"
+                       value="" />
+              </p>
+              <input type="submit" value="Najdi postajo">
+            </fieldset>
+          </form>
+      {% endblock %}
+
+      <p class="disclaimer">
+        Podatki so objavljeni iz strani
+        <a href="http://www.lpp.si/">LPP</a> in
+        <a href="http://www.telargo.si">Telargo</a>.
+        <a href="mailto:domen@dev.si">Kontakt</a>.
+      </p>
+
+      <div id="social-container">
+          <iframe src="http://www.facebook.com/plugins/like.php?href=www.trola.si&amp;layout=box_count&amp;show_faces=false&amp;width=450&amp;action=like&amp;font=tahoma&amp;colorscheme=light&amp;height=65"
+              scrolling="no"
+              frameborder="0"
+              style="border:none; overflow:hidden; width:55px; height:62px;"
+              allowTransparency="true">
+          </iframe>
+          <a href="http://twitter.com/share"
+              class="twitter-share-button"
+              data-text="LPP napoved prihodov avtobusov - http://www.trola.si"
+              data-count="vertical"
+              data-url="www.trola.si"
+              data-via="iElectric">Tweet</a>
+          <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+      </div>
+    </div>
+  </body>
+</html>

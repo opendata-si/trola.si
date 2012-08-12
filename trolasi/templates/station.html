@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{% block autofocus %}{% endblock%}
+
+{% block content %}
+  {% for station in stations %}
+  <h1><a href="{{ station.number }}">{{ station.number }} {{ station.name }}</a></h1>
+  <hr />
+  <table id="stations">
+    <thead>
+        <tr>
+            <td class="naslov">Bus</td>
+            <td>Smer</td>
+            <td>Naslednji čez (min):</td>
+        </tr>
+    </thead>
+    <tbody>
+     {% for bus in station.buses %}
+      <tr class="{% if loop.index is divisibleby 2 %}even{% else %}odd{% endif %}">
+        <td class="first">
+            <a href="{{ url_for('station', station=station.number, bus=bus.bus_number.strip(letters)) }}">{{ bus.bus_number }}</a>
+        </td>
+        <td>{{ bus.direction }}</td>
+        <td>{{ bus.times }}</td>
+      </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+  {% endfor %}
+  {{ super() }}
+{% endblock %}

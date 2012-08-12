@@ -11,3 +11,4 @@ echo '====== Running pep8 =========='
 pep8 trolasi
 pep8 setup.py
 
+exit 0

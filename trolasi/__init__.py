@@ -1,13 +1,13 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 import re
+import os
 import string
 import collections
 from datetime import datetime
 
 import requests
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from raven.contrib.flask import Sentry
 
 
@@ -42,6 +42,11 @@ def calculate_times(dt, cur_time):
 
 @app.route("/")
 def index():
+    from flask import request
+    station = request.args.get('station', '')
+    if station:
+        # we redirect for GET with station info
+        return redirect(url_for('station', station=station))
     return render_template('index.html')
 
 
@@ -53,10 +58,6 @@ def station(station, bus=None):
                      .replace('\n', '')\
                      .replace('\r', '')\
                      .encode('utf-8')
-
-    # station is a number, for example 64
-    while len(station) < 3:
-        station = '0' + station
 
     payload = {
         '__EVENTTARGET': '',
@@ -85,7 +86,8 @@ def station(station, bus=None):
     cur_time = RE_CUR_TIME.search(output)
     if not cur_time:
         sentry.captureMessage(output)
-        return output
+        error = u'Vir podatkov je spremenil format, administrator je bil obveščen.'
+        return render_template('index.html', error=error)
     else:
         cur_time = datetime.strptime(cur_time.groups()[0], '%H:%M')
 
@@ -129,7 +131,8 @@ def station(station, bus=None):
                            letters=string.letters)
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
-else:
+if 'gunicorn' in os.environ.get('SERVER_SOFTWARE', ''):  # pragma: nocover
     sentry.init_app(app)
+
+if __name__ == "__main__":  # pragma: nocover
+    app.run(debug=True)

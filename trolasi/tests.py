@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 import mock
+from datetime import datetime
 
 
 FIXTURE = u"""
@@ -77,6 +78,11 @@ NAPOVED PRIHODOV ZA BAVARSKI DVOR (600011)
 Napovedi so bile izračunane ob 14:38.
 Časi, označeni s črko n , pomenijo prihode nizkopodnih avtobusov,
 na katere je lažje vstopiti.
+Nazaj
+"""
+
+FIXTURE2 = """
+Postaje s tem imenom nismo našli, poizkusite znova!
 Nazaj
 """
 
@@ -193,10 +199,78 @@ class stationTests(unittest.TestCase):
                                      {'direction': u'Gara\u017ea', 'bus_number': u'6', 'times': u'Ni prihodov.'}])]
         )
 
-# TODO: test negative bus time
-# TODO: test service failure (500, ..)
-# TODO: test random service output
-# TODO: empty results
+    @mock.patch('trolasi.requests.post')
+    @mock.patch('trolasi.render_template')
+    def test_station_empty_results(self, mock_render_template, mock_post):
+        from . import station
+        mock_post().text = FIXTURE2
+
+        station('booooooooo')
+
+        mock_render_template.assert_called_with(
+            'index.html',
+            error=u'Postaje s tem imenom/številko ni.',
+        )
+
+    @mock.patch('trolasi.requests.post')
+    @mock.patch('trolasi.render_template')
+    @mock.patch('trolasi.sentry')
+    def test_station_random_service_response(self, mock_sentry, mock_render_template, mock_post):
+        from . import station
+        mock_post().text = "RANDOM"
+
+        station('bavarski')
+
+        mock_render_template.assert_called_with(
+            'index.html',
+            error=u'Vir podatkov je spremenil format, administrator je bil obveščen.',
+        )
+
+    @mock.patch('trolasi.requests.post')
+    @mock.patch('trolasi.render_template')
+    @mock.patch('trolasi.sentry')
+    def test_station_non_200_service_response(self, mock_sentry, mock_render_template, mock_post):
+        from . import station
+        from requests.exceptions import HTTPError
+        mock_post().raise_for_status.side_effect = HTTPError
+
+        station('bavarski')
+
+        mock_render_template.assert_called_with(
+            'index.html',
+            error=u'Nekaj je šlo narobe, administrator je bil obveščen.',
+        )
+
+    @mock.patch('trolasi.requests.post')
+    @mock.patch('trolasi.render_template')
+    def test_station_service_timeout(self, mock_render_template, mock_post):
+        from . import station
+        from requests.exceptions import Timeout
+        mock_post.side_effect = Timeout
+
+        station('bavarski')
+
+        mock_render_template.assert_called_with(
+            'index.html',
+            error=u'Podatki trenutno niso dosegljivi, poskusite kasneje.',
+        )
+
+
+class calculate_timesTests(unittest.TestCase):
+
+    def _makeOne(self, dt, cur_time):
+        from . import calculate_times
+        return calculate_times(dt, cur_time)
+
+    def test_ok(self):
+        mins = self._makeOne(datetime(2012, 8, 8, 0, 1),
+                             datetime(2012, 8, 8, 0, 0))
+        self.assertEqual(mins, 1)
+
+    def test_advanced_time_is_zero(self):
+        mins = self._makeOne(datetime(2012, 8, 8, 0, 1),
+                             datetime(2012, 8, 8, 0, 2))
+        self.assertEqual(mins, 0)
 
 
 class FunctionalTests(unittest.TestCase):

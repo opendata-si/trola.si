@@ -71,9 +71,13 @@ def station(station, bus=None):
                           data=payload,
                           timeout=5,
                           headers=HEADERS)
+        r.raise_for_status()
+    except requests.exceptions.Timeout:
+        error = u'Podatki trenutno niso dosegljivi, poskusite kasneje.'
+        return render_template('index.html', error=error)
     except requests.exceptions.RequestException:
         sentry.captureException()
-        error = u'Podatki trenutno niso dosegljivi, poskusite kasneje.'
+        error = u'Nekaj je šlo narobe, administrator je bil obveščen.'
         return render_template('index.html', error=error)
 
     output = r.text

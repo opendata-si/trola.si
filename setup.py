@@ -20,6 +20,8 @@ setup(name='trolasi',
           'nose',
           'coverage',
           'mock',
+          'gunicorn',
+          'setuptools',
       ],
       entry_points="""
       """,

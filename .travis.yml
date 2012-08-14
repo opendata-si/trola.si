@@ -1,0 +1,7 @@
+language: python
+install:
+  - python bootstrap.py
+  - bin/buildout
+
+script:
+  - bin/nosetests -v -s

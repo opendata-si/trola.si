@@ -1,5 +1,7 @@
 Simple webapp for Ljubljana bus traffic info (LPP).
 
+opendata.si
+
 INSTALL
 =======
 
@@ -16,13 +18,15 @@ TESTS
 
     $ bin/nosetests
 
+API
+===
+
+http://trolasi.readthedocs.org/en/latest/
+
 TODO
 ====
 
-* upload api to readthedocs
-* update opendata.si
 * sometimes site will return "Prišlo je do napake"
-* travis-ci
 
 * fix tests (include mimerender support for functionaltests)
 * autocomplete stations

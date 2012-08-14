@@ -1,19 +1,30 @@
 Simple webapp for Ljubljana bus traffic info (LPP).
 
-.. warning:: it's not possible to open source this since it contains secret keys (sentry ,..)
-
 INSTALL
 =======
 
 ::
+
     $ python bootstrap.py
     $ bin/buildout
     $ bin/python trolasi/__init__.py
 
+TESTS
+=====
+
+::
+
+    $ bin/nosetests
+
 TODO
 ====
 
-* api
+* upload api to readthedocs
+* update opendata.si
+* sometimes site will return "Prišlo je do napake"
+* travis-ci
+
+* fix tests (include mimerender support for functionaltests)
 * autocomplete stations
 * show nearest 5 stations (info, map)
 * tell people to use google maps for distance times

@@ -1,6 +1,6 @@
 Simple webapp for Ljubljana bus traffic info (LPP).
 
-opendata.si
+Part of http://www.opendata.si project.
 
 INSTALL
 =======

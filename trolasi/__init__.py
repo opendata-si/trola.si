@@ -264,6 +264,9 @@ def station(station, bus=None):
                 arrival_times = filter(lambda i: i < MAX_MINUTES,
                                        arrival_times)
 
+                if u'garaža' in direction.lower() and not arrival_times:
+                    continue
+
                 buses.append({
                     'number': bus_number + (bus_subnumber or ''),
                     'direction': direction.lower().capitalize(),

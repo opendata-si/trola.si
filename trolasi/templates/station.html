@@ -21,7 +21,7 @@
             <a href="{{ url_for('station', station=station.number, bus=bus.number.strip('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')) }}">{{ bus.number }}</a>
         </td>
         <td>{{ bus.direction }}</td>
-        <td>{% for a in bus.arrivals %}{% if not loop.first %}, {% endif %}{{ a }}"{% endfor %}{% if not bus.arrivals %}Ni prihodov.{% endif %}</td>
+        <td>{% for a in bus.arrivals %}{% if not loop.first %}, {% endif %}{{ a }}'{% endfor %}{% if not bus.arrivals %}Ni prihodov.{% endif %}</td>
         <!-- ugly hack since jinja2 does not support map() :( -->
       </tr>
      {% endfor %}

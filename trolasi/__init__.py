@@ -5,7 +5,6 @@ import simplejson
 import os
 import re
 import sys
-import string
 from datetime import datetime
 
 import requests

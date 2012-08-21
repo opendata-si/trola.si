@@ -91,7 +91,7 @@ class stationTests(unittest.TestCase):
 
     @mock.patch('trolasi.requests.post')
     def test_station_multiple(self, mock_post):
-        from . import station, Station, app
+        from . import station, Station
         mock_post().text = FIXTURE
 
         resp = station('bavarski')

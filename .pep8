@@ -1,4 +1,0 @@
-[pep8]
-ignore = E501
-# E501: line too long
-# E123: closnig bracket must match indent of starting bracket

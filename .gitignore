@@ -1,2 +1,7 @@
-/build/
+/build/index.html
+/build/app.js
+/build/app.css
+/build/packages/
+/build/.kansorc
 /node_modules/
+/components/

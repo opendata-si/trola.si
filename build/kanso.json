@@ -1,0 +1,10 @@
+{
+    "name": "trola.si",
+    "version": "0.0.1",
+    "description": "LPP napoved prihodov mestnih avtobusov",
+    "attachments": [ "index.html", "app.css" ],
+    "dependencies": {
+        "attachments": null,
+        "git-info": null
+    }
+}

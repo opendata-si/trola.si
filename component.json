@@ -1,0 +1,11 @@
+{
+  "name": "trola.si",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": null,
+    "backbone-amd": null,
+    "requirejs": null,
+    "less.js": null,
+    "r.js": null
+  }
+}

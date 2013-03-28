@@ -1,2 +1,2 @@
-/var/
-/docs/_build/
+/build/
+/node_modules/

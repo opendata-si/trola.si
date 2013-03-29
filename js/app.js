@@ -1,7 +1,3 @@
-define([], function() {
-  return {
-    'initialize': function() {
-      console.log('success');
-    }
-  };
+define(['backbone'], function(Backbone) {
+  console.log('success');
 });

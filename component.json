@@ -4,8 +4,10 @@
   "dependencies": {
     "jquery": null,
     "backbone-amd": null,
-    "requirejs": null,
+    "underscore-amd": null,
     "less.js": null,
+    "requirejs": null,
+    "almond": null,
     "r.js": null
   }
 }

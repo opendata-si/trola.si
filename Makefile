@@ -2,6 +2,7 @@ NPM = npm
 NODE = node
 KANSO = cd build && ../node_modules/bin/kanso
 BOWER = node_modules/bin/bower
+TESTEM = node_modules/bin/testem
 LESSC = node_modules/bin/lessc
 TARGETS = build/index.html build/app.css build/app.js
 
@@ -17,6 +18,9 @@ bootstrap:
 
 publish: all
 	$(KANSO) push cloudant
+
+test:
+	$(TESTEM) ci
 
 build/app.js:
 	$(NODE) components/r.js/dist/r.js -o build/build.js

@@ -1,3 +1,4 @@
 define(['backbone'], function(Backbone) {
-  alert('success');
+  //alert('success');
+  return 'success'
 });

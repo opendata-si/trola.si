@@ -5,6 +5,7 @@
     "jquery": null,
     "backbone-amd": null,
     "underscore-amd": null,
+    "chai": null,
     "less.js": null,
     "requirejs": null,
     "almond": null,

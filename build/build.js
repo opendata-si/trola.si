@@ -1,8 +1,9 @@
 ({
   baseUrl: "./",
   name: "requireLib",
-  optimize: 'uglify',
+  optimize: "none",
   include: [
+    "../js/require.config",
     "../js/app"
   ],
   mainConfigFile: "../js/main.js",

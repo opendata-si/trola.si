@@ -8,7 +8,7 @@ INSTALL
 ::
 
     $ python bootstrap.py
-    $ bin/buildout
+    $ bin/buildout -v 1.7.0
     $ bin/python trolasi/__init__.py
 
 TESTS

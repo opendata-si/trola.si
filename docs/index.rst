@@ -7,8 +7,8 @@ Welcome to trola.si API's documentation!
 ========================================
 
 :Author: Domen Kožar <domen@dev.si>
-:Source code: `github.com project <https://github.com/iElectric/trola.si>`_
-:Bug tracker: `github.com issues <https://github.com/iElectric/trola.si/issues>`_
+:Source code: `github.com project <https://github.com/opendata-si/trola.si>`_
+:Bug tracker: `github.com issues <https://github.com//opendata-si/issues>`_
 :Generated: |today|
 :Version: |release|
 

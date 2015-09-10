@@ -14,7 +14,7 @@ from raven.contrib.flask import Sentry
 
 
 MAX_MINUTES = 90
-SERVICE_URL = 'http://wbus.talktrack.com/wap.aspx?__ufps=026447'
+SERVICE_URL = 'http://wbus.mbt.margento.org/wap.aspx?__ufps=026447'
 HEADERS = {'User-Agent': 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) '
                          'Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3'}
 Station = collections.namedtuple('Station', 'number name buses')

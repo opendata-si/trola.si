@@ -14,7 +14,7 @@ from raven.contrib.flask import Sentry
 
 
 MAX_MINUTES = 90
-SERVICE_URL = 'http://wbus.mbt.margento.org/wap.aspx?__ufps=026447'
+SERVICE_URL = 'http://wbus.lpp.si/wap.aspx?__ufps=026447'
 HEADERS = {'User-Agent': 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.1.3) '
                          'Gecko/20090910 Ubuntu/9.04 (jaunty) Shiretoko/3.5.3'}
 Station = collections.namedtuple('Station', 'number name buses')
@@ -230,7 +230,7 @@ def station(station, bus=None):
     # get current time of application to compute relative times
     cur_time = RE_CUR_TIME.search(output)
     if not cur_time:
-        sentry.captureMessage(output)
+        sentry.captureMessage('Vir podatkov je spremenil format', extra={'html': output})
         error = u'Vir podatkov je spremenil format, administrator je bil obveščen.'
         return dict(template='index.html', error=error)
     else:

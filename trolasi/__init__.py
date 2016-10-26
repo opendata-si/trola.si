@@ -277,8 +277,8 @@ def station(station, bus=None):
 
 if 'test' not in sys.argv[0]:
     station = mimerender(default='html', html=render_html, json=render_json)(station)
-station = app.route("/<station>")(station)
-station = app.route("/<station>/<bus>")(station)
+station = app.route("/<station>/")(station)
+station = app.route("/<station>/<bus>/")(station)
 
 if 'gunicorn' in os.environ.get('SERVER_SOFTWARE', ''):  # pragma: nocover
     sentry.init_app(app)

@@ -256,7 +256,7 @@ class FunctionalTests(unittest.TestCase):
 
     def test_index_redirect(self):
         r = self.client.get('/?station=123')
-        self.assertTrue(r.location.endswith('/123'))
+        self.assertTrue(r.location.endswith('/123/'))
 
 # TODO: I need to figure out how to run those tests with mimerender decorator
 

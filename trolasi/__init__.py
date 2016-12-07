@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import collections
-import simplejson
+import json
 import os
 import re
 import sys
@@ -33,7 +33,7 @@ mimerender = mimerender.FlaskMimeRender(global_charset='utf-8')
 
 def render_json(**args):
     del args['template']
-    return simplejson.dumps(args)
+    return json.dumps(args)
 
 
 def render_html(**args):

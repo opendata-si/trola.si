@@ -260,12 +260,12 @@ class FunctionalTests(unittest.TestCase):
 
 # TODO: I need to figure out how to run those tests with mimerender decorator
 
-    #def test_station(self):
-        #r = self.client.get('/bavarski')
-        #self.assertTrue('Dolgi most' in r.data)
-        #self.assertTrue('Brod' in r.data)
-
-    #def test_station_bus(self):
-        #r = self.client.get('/bavarski/6')
-        #self.assertTrue('Dolgi most' in r.data)
-        #self.assertTrue('Brod' not in r.data)
+#    def test_station(self):
+#        r = self.client.get('/bavarski')
+#        self.assertTrue('Dolgi most' in r.data)
+#        self.assertTrue('Brod' in r.data)
+#
+#    def test_station_bus(self):
+#        r = self.client.get('/bavarski/6')
+#        self.assertTrue('Dolgi most' in r.data)
+#        self.assertTrue('Brod' not in r.data)

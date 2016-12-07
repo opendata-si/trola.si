@@ -1,7 +1,7 @@
 language: python
 install:
-  - python bootstrap.py
-  - bin/buildout
+  - pip install -r requirements.txt
+  - pip install pep8 nose 
 
 script:
-  - bin/nosetests -v -s
+  - ./pre-commit-check.sh

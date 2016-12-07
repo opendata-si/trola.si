@@ -42,6 +42,7 @@ def render_html(**args):
     return render_template(template, **args)
 
 app = Flask(__name__)
+app.config['PROPAGATE_EXCEPTIONS'] = True
 sentry = Sentry(dsn='https://2ebcb52af1b041e1a777fa02b3ee1b53:5ea300f455c'
                     '64741927fcf8f9c5ac965@app.getsentry.com/1928')
 

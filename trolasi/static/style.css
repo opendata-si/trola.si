@@ -74,7 +74,7 @@ hr {
     float: none;
     width: 100%;
     height: .1em;
-    margin: 0 0 .3em;
+    margin: 2em 0;
     border: none
 }
 form,p.opis{
@@ -117,9 +117,16 @@ a:link, a:visited {
 #stations a:hover {
     text-decoration: underline;
 }
-#social-container {
-    width: 120px;
+#share-buttons {
+    width: 100px;
     margin: 3px auto;
+}
+#share-buttons img {
+    width: 35px;
+    padding: 5px;
+    border: 0;
+    box-shadow: 0;
+    display: inline;
 }
 
 /* mobile view */

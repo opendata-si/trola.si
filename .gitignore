@@ -1,2 +1,4 @@
-/var/
 /docs/_build/
+/bin
+/include
+/lib

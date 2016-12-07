@@ -16,8 +16,9 @@ TESTS
 
 ::
 
-    $ bin/pip install nose
-    $ bin/nosetests
+    $ source bin/activate
+    $ pip install nose pep8
+    $ ./pre-commit-check.sh
 
 API
 ===

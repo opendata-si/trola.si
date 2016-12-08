@@ -18,5 +18,5 @@ in buildPythonPackage {
 
   src = ./.;
 
-  propagatedBuildInputs = [ flask mock requests raven blinker nose coverage mimerender sphinx sphinxcontrib_httpdomain ];
+  propagatedBuildInputs = [ flask mock requests raven blinker nose coverage mimerender sphinx sphinxcontrib_httpdomain simplejson ];
 }
